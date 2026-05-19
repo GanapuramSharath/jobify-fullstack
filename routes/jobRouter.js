@@ -13,12 +13,12 @@ import {
 import {
   validateJobInput,
   validateIdParam,
-} from "../middleWare/validationMiddleware.js";
+} from "../tempMiddleware/validationMiddleware.js";
 
 import {
   authenticateUser,
   authorizePermissions,
-} from "../middleWare/authMiddleware.js";
+} from "../tempMiddleware/authMiddleware.js";
 
 router.get("/stats", authenticateUser, showStats);
 

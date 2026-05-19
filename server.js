@@ -15,8 +15,8 @@ import authRouter from "./routes/authRouter.js";
 import userRouter from "./routes/userRouter.js";
 import jobRouter from "./routes/jobRouter.js";
 
-import { authenticateUser } from "./middleWare/authMiddleware.js";
-import ErrorHandlermiddleware from "./middleWare/errorHandlerMiddleware.js";
+import { authenticateUser } from "./tempMiddleware/authMiddleware.js";
+import ErrorHandlermiddleware from "./tempMiddleware/errorHandlerMiddleware.js";
 
 const app = express();
 

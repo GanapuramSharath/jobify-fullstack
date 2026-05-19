@@ -1,18 +1,18 @@
 import { Router } from "express";
 const router = Router();
-import upload from "../middleWare/multerMiddleware.js";
+import upload from "../tempMiddleware/multerMiddleware.js";
 import {
   getApplicationStats,
   getCurrentUser,
   updateUser,
 } from "../controllers/userController.js";
 
-import { validateUpdateUserInput } from "../middleWare/validationMiddleware.js";
+import { validateUpdateUserInput } from "../tempMiddleware/validationMiddleware.js";
 
 import {
   authenticateUser,
   authorizePermissions,
-} from "../middleWare/authMiddleware.js";
+} from "../tempMiddleware/authMiddleware.js";
 
 router.get("/current-user", authenticateUser, getCurrentUser);
 

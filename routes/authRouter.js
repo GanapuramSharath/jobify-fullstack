@@ -5,7 +5,7 @@ const router = Router();
 import {
   validateRegister,
   validateLoginInput,
-} from "../middleWare/validationMiddleware.js";
+} from "../tempMiddleware/validationMiddleware.js";
 router.post("/register", validateRegister, register);
 router.post("/login", validateLoginInput, login);
 router.get("/logout", logout);
