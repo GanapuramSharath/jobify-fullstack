@@ -6,6 +6,7 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import "express-async-errors";
+import cors from "cors";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -21,6 +22,7 @@ const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+app.use(cors());
 app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(cookieParser());
 app.use(express.json());
@@ -53,7 +55,7 @@ app.use(ErrorHandlermiddleware);
 
 // ================= SERVER =================
 
-const PORT = process.env.PORT || 5200;
+const PORT = process.env.PORT || 10000;
 
 const start = async () => {
   try {

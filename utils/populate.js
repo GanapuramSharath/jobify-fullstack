@@ -11,7 +11,7 @@ try {
   await mongoose.connect(process.env.MONGO_URL);
 
   const user = await User.findOne({
-    email: "sharath19@gmail.com",
+    email: "sharath@gmail.com",
   });
 
   const jsonJobs = JSON.parse(
