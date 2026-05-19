@@ -27,7 +27,6 @@ router
   .get(authenticateUser, getAllJobs)
   .post(
     authenticateUser,
-    authorizePermissions("admin"),
     validateJobInput,
     createJob,
   );
