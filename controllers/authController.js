@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import User from "../models/UserModel.js";
+import User from "../models/temp.js";
 import { comparePassword, hashPassword } from "../utils/passwordsUtils.js";
 import { UnauthenticatedError } from "../errors/customError.js";
 import "express-async-errors";

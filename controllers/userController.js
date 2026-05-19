@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import User from "../models/UserModel.js";
+import User from "../models/temp.js";
 import Job from "../models/JobModel.js";
 import cloudinary from "../utils/cloudinary.js";
 import fs from "fs";

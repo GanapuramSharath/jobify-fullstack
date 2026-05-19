@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import Job from "../models/JobModel.js";
-import User from "../models/UserModel.js";
+import User from "../models/temp.js";
 
 try {
   await mongoose.connect(process.env.MONGO_URL);
