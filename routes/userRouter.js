@@ -19,7 +19,6 @@ router.get("/current-user", authenticateUser, getCurrentUser);
 router.get(
   "/admin/app-stats",
   authenticateUser,
-  authorizePermissions("admin"),
   getApplicationStats,
 );
 
