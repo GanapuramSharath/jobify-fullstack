@@ -18,8 +18,7 @@ import {
 import {
   authenticateUser,
   authorizePermissions,
-} from "../MiddleWare/authMiddleWare.js";
-
+} from "../MiddleWare/authMiddleware.js";
 
 router.get("/stats", authenticateUser, showStats);
 
@@ -32,7 +31,6 @@ router
     validateJobInput,
     createJob,
   );
-
 
 router
   .route("/:id")

@@ -12,7 +12,7 @@ import { validateUpdateUserInput } from "../MiddleWare/validationMiddleware.js";
 import {
   authenticateUser,
   authorizePermissions,
-} from "../MiddleWare/authMiddleWare.js";
+} from "../MiddleWare/authMiddleware.js";
 
 router.get("/current-user", authenticateUser, getCurrentUser);
 
@@ -22,7 +22,6 @@ router.get(
   authorizePermissions("admin"),
   getApplicationStats,
 );
-
 
 router.patch(
   "/update-user",

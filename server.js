@@ -14,8 +14,8 @@ import authRouter from "./routes/authRouter.js";
 import userRouter from "./routes/userRouter.js";
 import jobRouter from "./routes/jobRouter.js";
 
-import { authenticateUser } from "./MiddleWare/authMiddleWare.js";
-import ErrorHandlermiddleware from "./MiddleWare/ErrorHandlermiddleware.js";
+import { authenticateUser } from "./MiddleWare/authMiddleware.js";
+import ErrorHandlermiddleware from "./MiddleWare/errorHandlerMiddleware.js";
 
 const app = express();
 
@@ -25,9 +25,7 @@ app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(cookieParser());
 app.use(express.json());
 
-
-
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
@@ -44,8 +42,6 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
 
 // ================= STATIC FILES =================
-
-
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
