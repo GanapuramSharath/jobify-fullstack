@@ -8,7 +8,7 @@ import {
   updateJob,
   deleteJob,
   showStats,
-} from "../controllers/jobController.js";
+} from "../controllers/tempController.js";
 
 import {
   validateJobInput,
