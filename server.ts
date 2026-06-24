@@ -18,7 +18,7 @@ import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware";
 const app = express();
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, "client", "dist")));
+
 app.use(cookieParser());
 app.use(express.json());
 
@@ -37,9 +37,10 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
 
 // React App
+app.use(express.static(path.join(process.cwd(), "client", "dist")));
 
-app.get("*", (_req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(process.cwd(), "client", "dist", "index.html"));
 });
 
 // Error Handler

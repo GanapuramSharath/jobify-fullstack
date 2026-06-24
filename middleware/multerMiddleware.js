@@ -36,56 +36,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var dotenv = require("dotenv");
-dotenv.config();
-var express_1 = require("express");
-var morgan_1 = require("morgan");
-var cookie_parser_1 = require("cookie-parser");
-require("express-async-errors");
-var cors_1 = require("cors");
-var path_1 = require("path");
-var authRouter_1 = require("./routes/authRouter");
-var userRouter_1 = require("./routes/userRouter");
-var jobRouter_1 = require("./routes/jobRouter");
-var authMiddleware_1 = require("./middleware/authMiddleware");
-var errorHandlerMiddleware_1 = require("./middleware/errorHandlerMiddleware");
-var app = (0, express_1.default)();
-app.use((0, cors_1.default)());
-app.use((0, cookie_parser_1.default)());
-app.use(express_1.default.json());
-if (process.env.NODE_ENV === "development") {
-    app.use((0, morgan_1.default)("dev"));
-}
-// API Routes
-app.get("/api/v1/test", function (_req, res) {
-    res.json({ msg: "test route" });
+var multer_1 = require("multer");
+var multer_storage_cloudinary_1 = require("multer-storage-cloudinary");
+var cloudinary_1 = require("../utils/cloudinary");
+var storage = new multer_storage_cloudinary_1.CloudinaryStorage({
+    cloudinary: cloudinary_1.default,
+    params: function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, ({
+                    folder: "jobify",
+                })];
+        });
+    }); },
 });
-app.use("/api/v1/jobs", authMiddleware_1.authenticateUser, jobRouter_1.default);
-app.use("/api/v1/users", userRouter_1.default);
-app.use("/api/v1/auth", authRouter_1.default);
-// React App
-app.use(express_1.default.static(path_1.default.join(process.cwd(), "client", "dist")));
-app.get("*", function (_req, res) {
-    res.sendFile(path_1.default.join(process.cwd(), "client", "dist", "index.html"));
+var upload = (0, multer_1.default)({
+    storage: storage,
+    limits: {
+        fileSize: 500000,
+    },
 });
-// Error Handler
-app.use(errorHandlerMiddleware_1.default);
-// Server
-var PORT = Number(process.env.PORT) || 10000;
-var start = function () { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        try {
-            app.listen(PORT, function () {
-                console.log("Server running on PORT ".concat(PORT, "..."));
-            });
-        }
-        catch (error) {
-            if (error instanceof Error) {
-                console.error(error.message);
-            }
-            process.exit(1);
-        }
-        return [2 /*return*/];
-    });
-}); };
-start();
+exports.default = upload;
