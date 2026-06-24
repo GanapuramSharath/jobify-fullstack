@@ -2711,13 +2711,8 @@ const UserSchema = new mongoose.Schema({
 });
 
 export default mongoose.model('User', UserSchema);
-```
 
-#### User Controller and Router
 
-controllers/authController.js
-
-```js
 export const register = async (req, res) => {
   res.send('register');
 };
