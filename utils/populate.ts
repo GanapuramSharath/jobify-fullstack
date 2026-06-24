@@ -1,18 +1,15 @@
 import { readFile } from "fs/promises";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
-
-import Job from "../models/JobModel";
-import User from "../models/UserModel";
+import { prisma } from "./prisma";
 
 dotenv.config();
 
 const populate = async (): Promise<void> => {
   try {
-    await mongoose.connect(process.env.MONGO_URL!);
-
-    const user = await User.findOne({
-      email: "sharath@gmail.com",
+    const user = await prisma.user.findUnique({
+      where: {
+        email: "sharath@gmail.com",
+      },
     });
 
     if (!user) {
@@ -21,20 +18,26 @@ const populate = async (): Promise<void> => {
 
     const jsonJobs = JSON.parse(
       await readFile("./utils/mockData.json", "utf-8"),
-    ) as Record<string, unknown>[];
+    );
 
-    const jobs = jsonJobs.map((job) => ({
-      ...job,
-      createdBy: user._id,
-    }));
-
-    await Job.deleteMany({
-      createdBy: user._id,
+    await prisma.job.deleteMany({
+      where: {
+        createdById: user.id,
+      },
     });
 
-    await Job.create(jobs);
+    await prisma.job.createMany({
+      data: jsonJobs.map((job: any) => ({
+        company: job.company,
+        position: job.position,
+        jobStatus: job.jobStatus,
+        jobType: job.jobType,
+        jobLocation: job.jobLocation,
+        createdById: user.id,
+      })),
+    });
 
-    console.log("Success!!!");
+    console.log("Success!");
     process.exit(0);
   } catch (error) {
     console.error(error);
