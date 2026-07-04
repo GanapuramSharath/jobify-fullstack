@@ -12,10 +12,12 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
 
     steps:
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -32,6 +34,14 @@ jobs:
 
       - name: Generate Prisma Client
         run: npx prisma generate
+
+
+      - name: Run API Tests
+        run: npm test
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
 
 
       - name: Build Project
