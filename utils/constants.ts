@@ -7,8 +7,8 @@ export const JOB_STATUS = {
 export type JobStatus = (typeof JOB_STATUS)[keyof typeof JOB_STATUS];
 
 export const JOB_TYPE = {
-  FULL_TIME: "full-time",
-  PART_TIME: "part-time",
+  FULL_TIME: "full_time",
+  PART_TIME: "part_time",
   INTERNSHIP: "internship",
 } as const;
 
@@ -20,11 +20,12 @@ export const JOB_SORT_BY = {
   ASCENDING: "a-z",
   DESCENDING: "z-a",
 } as const;
+
+export type JobSortBy = (typeof JOB_SORT_BY)[keyof typeof JOB_SORT_BY];
+
 export const USER_ROLE = {
   USER: "USER",
   ADMIN: "ADMIN",
 } as const;
 
 export type UserRole = (typeof USER_ROLE)[keyof typeof USER_ROLE];
-
-export type JobSortBy = (typeof JOB_SORT_BY)[keyof typeof JOB_SORT_BY];
