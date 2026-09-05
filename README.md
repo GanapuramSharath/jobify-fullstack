@@ -20,6 +20,20 @@ https://jobify-fullstack-6n36.onrender.com/
 - Protected routes and authorization middleware
 - CI/CD pipeline with GitHub Actions and Render
 
+  
+## Screenshots
+
+### Dashboard
+![Dashboard](public/screenshots/Screenshot%202026-09-05%20181015.png)
+
+### Add Job
+![Add Job](public/screenshots/Screenshot%202026-09-05%20181244.png)
+
+### Job Statistics
+![Job Statistics](public/screenshots/Screenshot%202026-09-05%20181321.png)
+
+### Profile
+![Profile](public/screenshots/Screenshot%202026-09-05%20181329.png)
 
 ## Tech Stack
 
