@@ -23,17 +23,17 @@ https://jobify-fullstack-6n36.onrender.com/
   
 ## Screenshots
 
+### Login Page
+![Login Page](./public/screenshots/login_page.png)
+
 ### Dashboard
-![Dashboard](public/screenshots/Screenshot%202026-09-05%20181015.png)
+![Dashboard](./public/screenshots/All_jobs.png)
 
 ### Add Job
-![Add Job](public/screenshots/Screenshot%202026-09-05%20181244.png)
+![Add Job](./public/screenshots/Add_job.png)
 
 ### Job Statistics
-![Job Statistics](public/screenshots/Screenshot%202026-09-05%20181321.png)
-
-### Profile
-![Profile](public/screenshots/Screenshot%202026-09-05%20181329.png)
+![Job Statistics](./public/screenshots/Stats.png)
 
 ## Tech Stack
 
