@@ -7,6 +7,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ---------------- ENUMS ----------------
+
 enum Role {
   USER
   ADMIN
@@ -24,38 +26,112 @@ enum JobType {
   internship
 }
 
+
+
+// ---------------- USER ----------------
+
 model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String
+  id String @id @default(uuid())
 
-  avatar    String   @default("")
-  lastName  String   @default("lastname")
-  location  String   @default("my city")
+  name     String
+  email    String @unique
+  password String
 
-  role      Role     @default(USER)
+  avatar   String @default("")
+  lastName String @default("lastname")
+  location String @default("my city")
 
-  jobs      Job[]
+  role Role @default(USER)
+
+  // Relations
+
+  jobs Job[]
+
+  subscription Subscription?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+// ---------------- JOB ----------------
+
 model Job {
-  id          String    @id @default(uuid())
+  id String @id @default(uuid())
 
-  company     String
-  position    String
+  company  String
+  position String
 
-  jobStatus   JobStatus @default(pending)
-  jobType     JobType   @default(full_time)
+  jobStatus JobStatus @default(pending)
 
-  jobLocation String    @default("my city")
+  jobType JobType @default(full_time)
+
+  jobLocation String @default("my city")
 
   createdById String
-  createdBy   User @relation(fields: [createdById], references: [id], onDelete: Cascade)
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdBy User @relation(fields: [createdById], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+}
+
+enum SubscriptionPlan {
+  FREE
+  PREMIUM
+}
+
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+}
+
+
+model Subscription {
+
+  id String @id @default(uuid())
+
+
+  userId String @unique
+
+
+  user User @relation(
+    fields: [userId],
+    references: [id],
+    onDelete: Cascade
+  )
+
+
+  plan SubscriptionPlan @default(FREE)
+
+
+  status SubscriptionStatus @default(ACTIVE)
+
+
+  provider String?
+  // RAZORPAY / STRIPE
+
+
+  providerCustomerId String?
+
+
+  providerSubscriptionId String?
+
+
+  providerPaymentId String?
+
+
+  currentPeriodStart DateTime?
+
+
+  currentPeriodEnd DateTime?
+
+
+  createdAt DateTime @default(now())
+
+
+  updatedAt DateTime @updatedAt
+
 }
