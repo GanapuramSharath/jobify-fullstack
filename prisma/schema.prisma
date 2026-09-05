@@ -26,8 +26,6 @@ enum JobType {
   internship
 }
 
-
-
 // ---------------- USER ----------------
 
 model User {
@@ -44,10 +42,7 @@ model User {
   role Role @default(USER)
 
   // Relations
-
   jobs Job[]
-
-  subscription Subscription?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -62,8 +57,7 @@ model Job {
   position String
 
   jobStatus JobStatus @default(pending)
-
-  jobType JobType @default(full_time)
+  jobType   JobType   @default(full_time)
 
   jobLocation String @default("my city")
 
@@ -72,66 +66,5 @@ model Job {
   createdBy User @relation(fields: [createdById], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
-
   updatedAt DateTime @updatedAt
-}
-
-enum SubscriptionPlan {
-  FREE
-  PREMIUM
-}
-
-
-enum SubscriptionStatus {
-  ACTIVE
-  CANCELLED
-  EXPIRED
-}
-
-
-model Subscription {
-
-  id String @id @default(uuid())
-
-
-  userId String @unique
-
-
-  user User @relation(
-    fields: [userId],
-    references: [id],
-    onDelete: Cascade
-  )
-
-
-  plan SubscriptionPlan @default(FREE)
-
-
-  status SubscriptionStatus @default(ACTIVE)
-
-
-  provider String?
-  // RAZORPAY / STRIPE
-
-
-  providerCustomerId String?
-
-
-  providerSubscriptionId String?
-
-
-  providerPaymentId String?
-
-
-  currentPeriodStart DateTime?
-
-
-  currentPeriodEnd DateTime?
-
-
-  createdAt DateTime @default(now())
-
-
-  updatedAt DateTime @updatedAt
-
 }
