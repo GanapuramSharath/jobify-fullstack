@@ -2,10 +2,9 @@
 
 A production-ready job tracking platform built with the MERN stack, migrated to PostgreSQL using Prisma ORM. It allows users to manage job applications, track progress, view analytics, and manage profiles securely.
 
-## Live Demo
+## Live Link
 
-Frontend: Add your deployed URL here  
-Backend API: Add your Render API URL here
+https://jobify-fullstack-6n36.onrender.com/
 
 
 ## Features
