@@ -329,3 +329,13 @@ button:disabled {
   background: #ffeeee;
   color: #d66a6a;
 }
+.hero-subheading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
