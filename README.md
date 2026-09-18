@@ -24,7 +24,7 @@ https://jobify-fullstack-6n36.onrender.com/
 ## Screenshots
 
 ### Landing Page
-![Landing Page](./screenshots/Landing_page.png)
+![Landing Page](./screenshots/Landing_page1.png)
 
 ### Login Page
 ![Login Page](./screenshots/Login_page.png)
