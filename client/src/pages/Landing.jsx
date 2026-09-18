@@ -15,11 +15,16 @@ const Landing = () => {
           <h1>
             job <span>tracking</span> app
           </h1>
-          <p>
-            One Place for Every Opportunity.
+          <p className="hero-subheading">
+  One Place for Every Opportunity.
+</p>
 
-Jobify helps you organize your job applications, remember where you've applied, and track your progress effortlessly. Store job details, manage application statuses, and stay focused on landing your next opportunity.
-          </p>
+<p className="hero-description">
+  Jobify helps you organize your job applications, remember where
+  you've applied, and track your progress effortlessly. Store job
+  details, manage application statuses, and stay focused on landing
+  your next opportunity.
+</p>
           <Link to='/register' className='btn register-link'>
             Register
           </Link>
