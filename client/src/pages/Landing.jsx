@@ -16,10 +16,9 @@ const Landing = () => {
             job <span>tracking</span> app
           </h1>
           <p>
-            I'm baby wayfarers hoodie next level taiyaki brooklyn cliche blue
-            bottle single-origin coffee chia. Aesthetic post-ironic venmo,
-            quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
-            narwhal.
+            One Place for Every Opportunity.
+
+Jobify helps you organize your job applications, remember where you've applied, and track your progress effortlessly. Store job details, manage application statuses, and stay focused on landing your next opportunity.
           </p>
           <Link to='/register' className='btn register-link'>
             Register
